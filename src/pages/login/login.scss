@@ -1,0 +1,53 @@
+page-login {
+
+    #backgroundApp{        
+        background-image: url('https://picsum.photos/1242/2208/?blur&image=534');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        filter: brightness(1.1) saturate(0.7);        
+    }
+
+    #formImage{            
+        margin-left: 7%;
+        margin-right: auto;
+        width: 50%;        
+    }
+
+    #formList{
+        margin-top:-20px;
+        margin-bottom: 30px;
+    }
+
+    #formLogin{
+        padding:0px !important; 
+        font-size: 16px;
+        margin-top:10px;
+        background: none;
+        border-top: none;
+        border-bottom:2px solid black;
+        box-shadow:none;
+        color:black;
+    }
+
+    #inputLogin{
+        color:black;
+        border-bottom-color:black;
+        box-shadow:none;
+    }
+    
+    #inputLogin:-moz-placeholder{
+        color: black;                
+    }
+
+    #btnForget{
+        text-decoration: underline;
+        color:white;
+        margin-top:20px;    
+        font-size: 14px;
+    }
+
+}
+
+.no-scroll .scroll-content{
+    overflow: hidden;
+}

@@ -1,0 +1,33 @@
+<!--
+  Generated template for the ExpensesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="orange">
+    <ion-title>Expenses</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="openForm({charNum: 0})">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<!--  [virtualScroll]="expenses"  -->
+<!-- *virtualItem="let expense" -->
+<ion-content padding class="no-scroll">
+  <ion-list>    
+    <ion-item ion-item *ngFor="let expense of expenses">
+        <ion-thumbnail item-start>
+            <img src="../../assets/imgs/icon-bill_management-alt.png">
+        </ion-thumbnail>
+        <h2>{{ expense.Descripcio }}</h2>
+        <p>{{ expense.Import | currency:'EUR':true:'1.2-2' }}</p>
+        <p>{{ expense.EstatDieta.Estat }}</p>
+        <button ion-button clear item-end (click)="editForm(item)">Edit</button>
+    </ion-item>
+</ion-list>
+</ion-content>
