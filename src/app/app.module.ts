@@ -10,6 +10,8 @@ import { LoginPage } from '../pages/login/login';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { ExpensesPage } from '../pages/expenses/expenses';
 import { ModalContentPage } from '../pages/modal-content/modal-content';
+import { ModalManageExpensePage } from '../pages/modal-manage-expense/modal-manage-expense';
+
 import { HttpClientModule } from '@angular/common/http';
 import { ProviderExpenseProvider } from '../providers/provider-expense/provider-expense';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
@@ -20,7 +22,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     LoginPage,
     DashboardPage,
     ExpensesPage,
-    ModalContentPage
+    ModalContentPage,
+    ModalManageExpensePage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     LoginPage,
     DashboardPage,
     ExpensesPage,
-    ModalContentPage
+    ModalContentPage,
+    ModalManageExpensePage
   ],
   providers: [
     StatusBar,

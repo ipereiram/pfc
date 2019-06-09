@@ -6,14 +6,19 @@
 -->
 
 <ion-menu [content]="mycontent">
+  <ion-header>
+    <ion-toolbar color="medium">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item menuClose (click)="closeMenu(item)">
-          <ion-icon name="log-out"></ion-icon> Log Out
-      </button>
-      <button ion-item menuClose (click)="closePage()">
-        <ion-icon name="close"></ion-icon> Close       
-      </button>      
+      <ion-item (click)="closeMenu(item)">
+          <ion-icon class="icon" name="log-out" item-left></ion-icon> Log Out
+      </ion-item>
+      <ion-item (click)="closePage()">
+        <ion-icon class="icon" name="close" item-left></ion-icon> Close       
+      </ion-item>      
     </ion-list>
   </ion-content>  
 </ion-menu>
@@ -23,7 +28,7 @@
 <ion-header>
   <ion-navbar color="orange">
     <button ion-button menuToggle (click)="toggleLeftMenu()">
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon class="icon-menu" name="menu"></ion-icon>
     </button>    
     <ion-title> Dashboard </ion-title>
   </ion-navbar>
@@ -49,7 +54,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="tile" (click)="loadExpenses(item)" col-5>
+  <ion-card class="tile" (click)="loadValidateExpenses()" col-5>
     <ion-card-content>
       <ion-item>
         <h1><ion-icon name="done-all"></ion-icon></h1>
@@ -58,7 +63,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="tile" (click)="loadExpenses(item)" col-5>
+  <ion-card class="tile" (click)="loadPayExpenses()" col-5>
     <ion-card-content>
       <ion-item>
         <h1><ion-icon name="cash"></ion-icon></h1>
@@ -67,7 +72,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="tile" (click)="loadExpenses(item)" col-5>
+  <ion-card class="tile" col-5>
       <ion-card-content>
         <ion-item>
           <h1><ion-icon name="person-add"></ion-icon></h1>

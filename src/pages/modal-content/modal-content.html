@@ -41,6 +41,10 @@
       <ion-label>Date</ion-label>
       <ion-datetime  [(ngModel)]="todo.Data" displayFormat="MMM DD YYYY" [ngModelOptions]="{standalone: true}"></ion-datetime>
     </ion-item>
-    <button ion-button type="submit" block>Create</button>
+
+    <button ion-button type="submit" block>
+      <span *ngIf="isEdit == false">Create</span>
+      <span *ngIf="isEdit == true">Edit</span>
+    </button>
   </form>
 </ion-content>

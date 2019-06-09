@@ -19,18 +19,29 @@ import { LoginPage } from '../login/login';
 export class DashboardPage {
 
   page;
+  validate;  
+  pay;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
     this.page = menuCtrl.enable(true);        
     this.page = navParams.data.page;
+    
   }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad DashboardPage');
-  // }
+  ionViewDidLoad(){
+    this.validate = "Validate";
+    this.pay = "Pay";
+  }
 
   loadExpenses(item) {
     this.navCtrl.push(ExpensesPage, {item: item });
+  }
+
+  loadValidateExpenses(){    
+    this.navCtrl.push(ExpensesPage, {item: this.validate });
+  }
+
+  loadPayExpenses(){
+    this.navCtrl.push(ExpensesPage, {item: this.pay });
   }
 
   toggleLeftMenu() {
@@ -42,7 +53,7 @@ export class DashboardPage {
   }
 
   closePage() {
-    this.navCtrl.push(LoginPage);
+    this.menuCtrl.close();
   }
 
 }

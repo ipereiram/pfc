@@ -19,6 +19,7 @@ export class ModalContentPage {
   typeExpenses;
   myObjStr;
   todo = {};
+  isEdit;  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public platform: Platform, public viewCtrl: ViewController, public prvCtrl: ProviderExpenseProvider) {
@@ -26,6 +27,14 @@ export class ModalContentPage {
   }
 
   ionViewDidLoad(){
+    this.isEdit = false;
+
+    //Es edit?
+    if (this.navParams.data != null && this.navParams.data.Id != undefined){
+      this.todo = this.navParams.data;
+      this.isEdit = true;
+    }
+
     this.prvCtrl.getAllExpensesType()
     .subscribe(      
       (data)=> {this.typeExpenses = data;},
@@ -37,11 +46,20 @@ export class ModalContentPage {
     console.log(this.todo);    
     this.myObjStr = JSON.stringify(this.todo);
     
-    this.prvCtrl.addExpense(this.myObjStr)
-    .subscribe(
-      (data)=> {this.navCtrl.last();},
-      (error)=>{console.log(error);}      
-    )
+
+    if (!this.isEdit){
+      this.prvCtrl.addExpense(this.myObjStr)
+      .subscribe(
+        (data)=> {this.dismiss();},
+        (error)=>{console.log(error);}      
+      )
+    } else {      
+      this.prvCtrl.updateExpense(this.myObjStr)
+      .subscribe(
+        (data)=> {this.dismiss()},
+        (error)=> {console.log(error);}
+      )      
+    }
   }
   
   dismiss() {

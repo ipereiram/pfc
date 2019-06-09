@@ -1,0 +1,58 @@
+<!--
+  Generated template for the ModalManageExpensePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="orange">
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span ion-text showWhen="ios, android, windows">Cancel</span>
+        </button>
+      </ion-buttons>
+    <ion-title>
+        <span *ngIf="todo.Estat == 2">Validate Expense</span>
+        <span *ngIf="todo.Estat != 2">Pay Expense</span>
+    </ion-title>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card class="card-wrap">
+      <img class="card full-card" src="../../assets/imgs/icon-bill_management-alt.png"/>
+      <ion-card-content>
+        <ion-card-title>
+            {{ todo.Descripcio }}
+        </ion-card-title>
+        <p>User: {{ todo?.Usuari?.Nom }} {{ todo?.Usuari?.Cognom1 }}</p>        
+        <p>Expense type: {{ todo?.TipusDieta?.Tipus }}</p>
+        <p>Date: {{ todo.Data | date: 'dd/MM/yyyy' }}</p>
+        <p>Amount: {{ todo.Import | currency:'EUR':true:'1.2-2' }}</p>
+      </ion-card-content>            
+    </ion-card>    
+    <ion-buttons end style="text-align: center;" *ngIf="todo.Estat == 2">
+        <button ion-button icon-start color="secondary" item-end (click)="accept(todo)" >
+          <ion-icon name="checkmark"></ion-icon>
+            Accept
+        </button>
+        <button ion-button icon-start color="danger" item-end (click)="refuse(todo)">
+          <ion-icon name="close"></ion-icon>
+            Refuse
+        </button>
+    </ion-buttons> 
+
+    <ion-buttons end style="text-align: center;" *ngIf="todo.Estat == 3">
+        <button ion-button icon-start item-end (click)="pendingPay(todo)">
+          <ion-icon name="checkmark"></ion-icon>
+            Penging Pay
+        </button>
+    </ion-buttons>   
+
+      <ion-buttons end style="text-align: center;" *ngIf="todo.Estat == 5">
+        <button ion-button icon-start item-end (click)="pay(todo)">
+          <ion-icon name="checkmark"></ion-icon>
+            Pay
+        </button>
+      </ion-buttons>
+</ion-content>

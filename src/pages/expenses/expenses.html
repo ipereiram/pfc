@@ -7,8 +7,12 @@
 <ion-header>
 
   <ion-navbar color="orange">
-    <ion-title>Expenses</ion-title>
-    <ion-buttons end>
+    <ion-title>
+      <span *ngIf="item != 'Validate' && item != 'Pay'">Expenses</span>
+      <span *ngIf="item == 'Validate'">Check Exp.</span>
+      <span *ngIf="item == 'Pay'">Pay Expense</span>
+    </ion-title>
+    <ion-buttons end *ngIf="item != 'Validate' && item != 'Pay'">
       <button ion-button icon-only  (click)="openForm({charNum: 0})">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -24,10 +28,21 @@
         <ion-thumbnail item-start>
             <img src="../../assets/imgs/icon-bill_management-alt.png">
         </ion-thumbnail>
+
         <h2>{{ expense.Descripcio }}</h2>
         <p>{{ expense.Import | currency:'EUR':true:'1.2-2' }}</p>
         <p>{{ expense.EstatDieta.Estat }}</p>
-        <button ion-button clear item-end (click)="editForm(item)">Edit</button>
+
+        <button ion-button clear item-end (click)="editForm(expense)">
+            <span *ngIf="expense.EstatDieta.Id == 1">Edit</span>
+        </button>
+        <button ion-button clear item-end (click)="save(expense)">
+            <span *ngIf="expense.EstatDieta.Id == 1">Save</span>
+        </button>
+        <button ion-button clear item-end (click)="viewDetail(expense)">
+            <span *ngIf="item == 'Validate' || item == 'Pay'">View</span>
+        </button>
+
     </ion-item>
 </ion-list>
 </ion-content>
